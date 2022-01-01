@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 157363281425446197}
   - component: {fileID: 157363281425446202}
+  - component: {fileID: 3352106871575457813}
   m_Layer: 0
   m_Name: Grass_Prefab
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 50a98f2f59fe37140ba3a3c0e7e78a57, type: 3}
+  m_Sprite: {fileID: -4418137972919979924, guid: 52d8a0a470c9d884cab994a31bc19359, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -82,3 +83,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3352106871575457813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157363281425446203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50726675fba95864587b19fb93cb86a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generationID: 1
+  id: Grass
+  prefab: {fileID: 157363281425446203}
+  isTile: 1
+  neverDestroy: 0
+  hardness: 0
