@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private float speed;
     [SerializeField] private int renderDistanceInclusive;
 
+    [Range(0, 200)] private int xMinRenderValue, xMaxRenderValue;
+    [Range(0, 550)] private int yMinRenderValue, yMaxRenderValue;
+
     [SerializeField] private LayerMask layerMask;
     [SerializeField] private float jumpForce;
     private Rigidbody2D rb;
@@ -18,12 +21,15 @@ public class PlayerController : MonoBehaviour {
     public ClassicWorldGeneration worldGeneration;
     public MiningMechanic miningMechanic;
 
+    private Tile[,] loadedTiles;
+
 
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         miningMechanic = GetComponent<MiningMechanic>();
+        loadedTiles = new Tile[worldGeneration.xWidth, worldGeneration.yHeight];
 
         LoadNewTiles();
 
@@ -33,10 +39,11 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetKey(left)) {
             // go left
             transform.position += Vector3.left * speed * Time.deltaTime;
-            // if block is there start destroying if possible
+            LoadNewTiles();
         } else if (Input.GetKey(right)) {
             // go right
             transform.position += Vector3.right * speed * Time.deltaTime;
+            LoadNewTiles();
         }
 
         if (Input.GetKeyDown(jump) && IsGrounded()) {
@@ -45,16 +52,45 @@ public class PlayerController : MonoBehaviour {
     }
     private void LoadNewTiles() {
         Vector2 pos = transform.position;
-        for (int x = (int)pos.x - renderDistanceInclusive; x <= (int)pos.x + renderDistanceInclusive; x++) {
-            for (int y = (int)pos.y - renderDistanceInclusive; y <= (int)pos.y + renderDistanceInclusive; y++) {
-                if (worldGeneration.tileMap.GetLength(1) > y) {
-                    if (worldGeneration.tileMap[x, y] != 0) {
-                        foreach (GeneratableTile t in worldGeneration.generatableTiles) {
-                            if (t.generationID == worldGeneration.tileMap[x, y]) {
-                                print(worldGeneration.tileMap[x, y]);
-                                GameObject tile = Instantiate(t.prefab.prefab, worldGeneration.transform);
-                                tile.transform.position = new Vector2(x + 1, y + 1);
-                                print(tile);
+
+        // Calculate the first and last parts of the tile loading sequence+
+        xMinRenderValue = (int)pos.x - renderDistanceInclusive;
+        xMaxRenderValue = (int)pos.x + renderDistanceInclusive;
+        yMinRenderValue = (int)pos.y - renderDistanceInclusive;
+        yMaxRenderValue = (int)pos.y + renderDistanceInclusive;
+
+        // Clamp the values to the bounds of the map array
+        if (xMinRenderValue < 0)
+            xMinRenderValue = 0;
+
+        if (xMaxRenderValue > worldGeneration.xWidth)
+            xMaxRenderValue = worldGeneration.xWidth;
+
+        if (yMinRenderValue < 0)
+            yMinRenderValue = 0;
+
+        if (yMaxRenderValue > worldGeneration.yHeight)
+            yMaxRenderValue = worldGeneration.yHeight;
+
+        print(xMinRenderValue+" "+ xMaxRenderValue+" "+ yMinRenderValue+" "+ yMaxRenderValue);
+
+        // Checking if within bounds of render distance on xCord
+        for (int x = xMinRenderValue; x <= xMaxRenderValue; x++) {
+            // Checking if within bounds of render distance on yCord
+            for (int y = yMinRenderValue; y <= yMaxRenderValue; y++) {
+                // Checking to make sure the area is within the map
+                if (worldGeneration.tileMap.GetLength(0) > x && worldGeneration.tileMap.GetLength(1) > y) {
+                    // Check to make sure tile has not already loaded
+                    if (loadedTiles[x, y] == null) {
+                        // If the tile exists (isn't a 0 tile)
+                        if (worldGeneration.tileMap[x, y] != 0) {
+                            foreach (GeneratableTile t in worldGeneration.generatableTiles) {
+                                if (t.generationID == worldGeneration.tileMap[x, y]) {
+                                    print(worldGeneration.tileMap[x, y]);
+                                    GameObject tile = Instantiate(t.prefab.prefab, worldGeneration.transform);
+                                    tile.transform.position = new Vector2(x + 1, y + 1);
+                                    loadedTiles[x, y] = tile.GetComponent<Tile>();
+                                }
                             }
                         }
                     }

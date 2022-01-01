@@ -7,7 +7,7 @@ public class Tile : MonoBehaviour
     public int generationID;
     public string id;
     public GameObject prefab;
-    public bool isTile = false;
+    public bool isLoaded = true;
     public bool neverDestroy = false;
     public int hardness;
 
