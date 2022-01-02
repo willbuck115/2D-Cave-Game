@@ -10,12 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 5288607922977748235}
   - component: {fileID: 5288607922977748228}
-  - component: {fileID: 7100788205187097248}
   - component: {fileID: -663995718413270729}
+  - component: {fileID: 7100788205187097248}
   - component: {fileID: 8792297769904811698}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cobblestone_prefab
-  m_TagString: Untagged
+  m_TagString: MinableTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -85,24 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7100788205187097248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5288607922977748229}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50726675fba95864587b19fb93cb86a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  generationID: 4
-  id: Cobblestone
-  prefab: {fileID: 5288607922977748229}
-  isTile: 1
-  neverDestroy: 0
-  hardness: 0
 --- !u!50 &-663995718413270729
 Rigidbody2D:
   serializedVersion: 4
@@ -124,6 +106,26 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7100788205187097248
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5288607922977748229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50726675fba95864587b19fb93cb86a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  generationID: 4
+  id: Cobblestone
+  prefab: {fileID: 5288607922977748229}
+  isLoaded: 1
+  neverDestroy: 0
+  hardness: 5
+  mineTime: 5
+  indexInNoiseArray: {x: 0, y: 0}
 --- !u!61 &8792297769904811698
 BoxCollider2D:
   m_ObjectHideFlags: 0

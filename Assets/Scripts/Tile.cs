@@ -10,6 +10,8 @@ public class Tile : MonoBehaviour
     public bool isLoaded = true;
     public bool neverDestroy = false;
     public int hardness;
+    public float mineTime;
+    public Vector2 indexInNoiseArray;
 
     private void OnTriggerExit2D(Collider2D collision) {
         if(!neverDestroy)
