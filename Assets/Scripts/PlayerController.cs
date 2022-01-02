@@ -15,22 +15,16 @@ public class PlayerController : MonoBehaviour {
     [Range(0, 550)] private int yMinRenderValue, yMaxRenderValue;
 
     [SerializeField] private LayerMask layerMask;
-    
-    
-    [SerializeField] private float jumpForce;
-    private Rigidbody2D rb;
-    private BoxCollider2D boxCollider;
 
     public ClassicWorldGeneration worldGeneration;
-    private MiningMechanic miningMechanic;
-
     private Tile[,] loadedTiles;
+
+    private MiningMechanic miningMechanic;
+    [SerializeField] private Transform collectables;
 
 
 
     private void Start() {
-        rb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
         miningMechanic = this.GetComponent<MiningMechanic>();
         loadedTiles = new Tile[worldGeneration.xWidth, worldGeneration.yHeight];
 
@@ -81,7 +75,6 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator TriggerMovement(Vector3 dir) {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, .52f, layerMask);
-        print(hit.collider);
         if (hit.collider == null) {
             // move
             //transform.position += dir * speed * Time.deltaTime;
@@ -92,11 +85,9 @@ public class PlayerController : MonoBehaviour {
         } else if (hit.collider.tag == "MinableTile") {
             Tile t = hit.collider.GetComponent<Tile>();
             if (miningMechanic.AttemptToMineTile(t)) {
-                Debug.Log("waiting for mine");
                 yield return new WaitWhile(() => miningMechanic.isMiningTile);
                     worldGeneration.tileMap[(int)t.indexInNoiseArray.x, (int)t.indexInNoiseArray.y] = 0;
-                    Destroy(hit.collider.GetComponent<Tile>());
-                    Destroy(hit.collider.gameObject);
+                    t.Mined(collectables);
             }
         }
 
@@ -151,24 +142,4 @@ public class PlayerController : MonoBehaviour {
             }
         }
     }
-    private bool IsGrounded() {
-        RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, .1f, layerMask);
-        return hit.collider != null;
-    }
 }
-
-/*public class Tile {
-    public GameObject prefab;
-    public Vector2 coordinates;
-    public bool isTile = false;
-
-    public Tile(GameObject p, bool isT) {
-        prefab = p;
-        isTile = isT;
-    }
-
-    private void OnTriggerExit2D(Collider2D collision) {
-        //Destroy(this.gameObject);
-    }
-}
-*/
