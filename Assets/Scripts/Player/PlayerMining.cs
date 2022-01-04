@@ -2,22 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MiningMechanic : MonoBehaviour
+public class PlayerMining : MonoBehaviour
 {
 
-    public int toolHardness = 0;
-    private PlayerController player;
+    public Pickaxe currentPickaxe;
+    public Pickaxe[] ownedPickaxes;
+
+    private PlayerBase playerClass;
     public bool isMiningTile;
 
     private Tile tile;
 
     private void Start() {
-        player = this.GetComponent<PlayerController>();
+        playerClass = this.GetComponent<PlayerBase>();
     }
 
     public bool AttemptToMineTile(Tile t) {
         tile = t;
-        if(t.hardness <= toolHardness) {
+        if(t.hardness <= currentPickaxe.miningLevel) {
             isMiningTile = true;
             StartCoroutine(MineTile());
             return true;

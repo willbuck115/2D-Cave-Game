@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInventorySystem : MonoBehaviour
+public class PlayerInventory : MonoBehaviour
 {
     // can be upgraded this is default from start of game
     [SerializeField] private int inventorySpace = 10;
@@ -26,6 +26,7 @@ public class PlayerInventorySystem : MonoBehaviour
     }
 
     public void RemoveItemFromInventory(int index) {
+        Debug.Log("Remove");
         items.Remove(items[index]);
     }
 }

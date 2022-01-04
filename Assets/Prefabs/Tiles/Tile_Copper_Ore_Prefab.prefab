@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generationID: 5
-  id: Copper
+  id: Copper_Ore
   prefab: {fileID: 7645222618086096608}
   indexInNoiseArray: {x: 0, y: 0}
   isLoaded: 1

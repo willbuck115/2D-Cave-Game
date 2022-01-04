@@ -14,19 +14,18 @@ public class PlayerController : MonoBehaviour {
     [Range(0, 200)] private int xMinRenderValue, xMaxRenderValue;
     [Range(0, 550)] private int yMinRenderValue, yMaxRenderValue;
 
+    public ClassicWorldGeneration IWorldGeneratorClass;
+    private Tile[,] loadedTiles;
     [SerializeField] private LayerMask layerMask;
 
-    public ClassicWorldGeneration worldGeneration;
-    private Tile[,] loadedTiles;
-
-    private MiningMechanic miningMechanic;
+    private PlayerBase playerBaseClass;
     [SerializeField] private Transform collectables;
 
 
 
     private void Start() {
-        miningMechanic = this.GetComponent<MiningMechanic>();
-        loadedTiles = new Tile[worldGeneration.xWidth, worldGeneration.yHeight];
+        playerBaseClass = GetComponent<PlayerBase>();
+        loadedTiles = new Tile[IWorldGeneratorClass.xWidth, IWorldGeneratorClass.yHeight];
 
         LoadNewTiles();
 
@@ -84,9 +83,9 @@ public class PlayerController : MonoBehaviour {
             yield break;
         } else if (hit.collider.tag == "MinableTile") {
             Tile t = hit.collider.GetComponent<Tile>();
-            if (miningMechanic.AttemptToMineTile(t)) {
-                yield return new WaitWhile(() => miningMechanic.isMiningTile);
-                    worldGeneration.tileMap[(int)t.indexInNoiseArray.x, (int)t.indexInNoiseArray.y] = 0;
+            if (playerBaseClass.playerMiningClass.AttemptToMineTile(t)) {
+                yield return new WaitWhile(() => playerBaseClass.playerMiningClass.isMiningTile);
+                    IWorldGeneratorClass.tileMap[(int)t.indexInNoiseArray.x, (int)t.indexInNoiseArray.y] = 0;
                     t.Mined(collectables);
             }
         }
@@ -108,28 +107,28 @@ public class PlayerController : MonoBehaviour {
         if (xMinRenderValue < 0)
             xMinRenderValue = 0;
 
-        if (xMaxRenderValue > worldGeneration.xWidth)
-            xMaxRenderValue = worldGeneration.xWidth;
+        if (xMaxRenderValue > IWorldGeneratorClass.xWidth)
+            xMaxRenderValue = IWorldGeneratorClass.xWidth;
 
         if (yMinRenderValue < 0)
             yMinRenderValue = 0;
 
-        if (yMaxRenderValue > worldGeneration.yHeight)
-            yMaxRenderValue = worldGeneration.yHeight;
+        if (yMaxRenderValue > IWorldGeneratorClass.yHeight)
+            yMaxRenderValue = IWorldGeneratorClass.yHeight;
 
         // Checking if within bounds of render distance on xCord
         for (int x = xMinRenderValue; x <= xMaxRenderValue; x++) {
             // Checking if within bounds of render distance on yCord
             for (int y = yMinRenderValue; y <= yMaxRenderValue; y++) {
                 // Checking to make sure the area is within the map
-                if (worldGeneration.tileMap.GetLength(0) > x && worldGeneration.tileMap.GetLength(1) > y) {
+                if (IWorldGeneratorClass.tileMap.GetLength(0) > x && IWorldGeneratorClass.tileMap.GetLength(1) > y) {
                     // Check to make sure tile has not already loaded
                     if (loadedTiles[x, y] == null) {
                         // If the tile exists (isn't a 0 tile)
-                        if (worldGeneration.tileMap[x, y] != 0) {
-                            foreach (GeneratableTile t in worldGeneration.generatableTiles) {
-                                if (t.generationID == worldGeneration.tileMap[x, y]) {
-                                    GameObject tile = Instantiate(t.prefab.prefab, worldGeneration.transform);
+                        if (IWorldGeneratorClass.tileMap[x, y] != 0) {
+                            foreach (GeneratableTile t in IWorldGeneratorClass.generatableTiles) {
+                                if (t.generationID == IWorldGeneratorClass.tileMap[x, y]) {
+                                    GameObject tile = Instantiate(t.prefab.prefab, IWorldGeneratorClass.transform);
                                     tile.transform.position = new Vector2(x + 1, y + 1);
                                     Tile tileComponent = tile.GetComponent<Tile>();
                                     loadedTiles[x, y] = tileComponent;

@@ -5,7 +5,6 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public int generationID;
-    public string id;
     public GameObject prefab;
     public Vector2 indexInNoiseArray;
 

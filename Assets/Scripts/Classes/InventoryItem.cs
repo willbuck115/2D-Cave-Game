@@ -9,7 +9,7 @@ public class InventoryItem : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.transform.name == "Player") {
-            PlayerInventorySystem inventory = collision.GetComponent<PlayerInventorySystem>();
+            PlayerInventory inventory = collision.GetComponent<PlayerInventory>();
             inventory.PickUpItem(this);
         }
     }
