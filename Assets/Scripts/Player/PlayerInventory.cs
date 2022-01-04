@@ -5,12 +5,12 @@ using UnityEngine;
 public class PlayerInventory : MonoBehaviour
 {
     // can be upgraded this is default from start of game
-    [SerializeField] private int inventorySpace = 10;
-    public List<InventoryItem> items = new List<InventoryItem>();
+    [SerializeField] private int inventorySpace = 50;
+    [SerializeField] internal List<InventoryItem> items = new List<InventoryItem>();
 
-    public InventoryItem[] possibleItems;
+    [SerializeField] internal InventoryItem[] possibleItems;
 
-    public void PickUpItem(InventoryItem pickedUp) {
+    internal void PickUpItem(InventoryItem pickedUp) {
         if(items.Count < inventorySpace) {
             // pickup item
             foreach(InventoryItem i in possibleItems) {
@@ -25,7 +25,7 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-    public void RemoveItemFromInventory(int index) {
+    internal void RemoveItemFromInventory(int index) {
         Debug.Log("Remove");
         items.Remove(items[index]);
     }

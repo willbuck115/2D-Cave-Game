@@ -18,7 +18,7 @@ public class Pickaxe : ScriptableObject
 
     public bool CanCraft(PlayerBase p) {
         numberInInventory = 0;
-        foreach (InventoryItem item in p.PlayerInventoryClass.items) {
+        foreach (InventoryItem item in p.playerInventoryClass.items) {
             if (item == craftingItem) {
                 numberInInventory = numberInInventory + 1;
             }
@@ -36,9 +36,9 @@ public class Pickaxe : ScriptableObject
         Debug.Log(numberInInventory);
         numberInInventory = 0;
         itemsIndexesToRemove = new List<int>();
-        Debug.Log(p.PlayerInventoryClass.items.Count);
-        for (int i = 0; i < p.PlayerInventoryClass.items.Count; i++) {
-            if (p.PlayerInventoryClass.items[i].numericID == craftingItem.numericID && numberInInventory < numberOfMaterialsRequired) {
+        Debug.Log(p.playerInventoryClass.items.Count);
+        for (int i = 0; i < p.playerInventoryClass.items.Count; i++) {
+            if (p.playerInventoryClass.items[i].numericID == craftingItem.numericID && numberInInventory < numberOfMaterialsRequired) {
                 numberInInventory = numberInInventory + 1;
                 itemsIndexesToRemove.Add(i);
                 Debug.Log(i);
@@ -46,7 +46,7 @@ public class Pickaxe : ScriptableObject
         }
 
         for(int i = 0; i < itemsIndexesToRemove.Count; i++) {
-            p.PlayerInventoryClass.RemoveItemFromInventory(itemsIndexesToRemove.Count - i - 1);
+            p.playerInventoryClass.RemoveItemFromInventory(itemsIndexesToRemove.Count - i - 1);
         }
 
         return this;

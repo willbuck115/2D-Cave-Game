@@ -223,53 +223,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eec15b33d5204941859a693d74bb3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldLoadFromFile: 0
   generatableTiles:
   - generationID: 0
     prefab:
       tileID: 
       tile: {fileID: 0}
-      prefab: {fileID: 157363281425446203, guid: 7083ef464d59292489304f229c875687, type: 3}
-      generationID: 1
+      prefab: {fileID: 0}
+      generationID: 0
       spawnChance: 0
     tile: {fileID: 3352106871575457813, guid: 7083ef464d59292489304f229c875687, type: 3}
   - generationID: 0
     prefab:
       tileID: 
       tile: {fileID: 0}
-      prefab: {fileID: 4775010030039817798, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}
-      generationID: 2
+      prefab: {fileID: 0}
+      generationID: 0
       spawnChance: 0
     tile: {fileID: 7614399429702912483, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}
   - generationID: 0
     prefab:
       tileID: 
       tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
+      prefab: {fileID: 0}
+      generationID: 0
       spawnChance: 0
     tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-  - generationID: 4
+  - generationID: 0
     prefab:
       tileID: 
       tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
+      prefab: {fileID: 0}
+      generationID: 0
       spawnChance: 0
     tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}
-  - generationID: 4
+  - generationID: 0
     prefab:
       tileID: 
       tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
+      prefab: {fileID: 0}
+      generationID: 0
       spawnChance: 0
     tile: {fileID: 1750055218117441999, guid: 01773ab8c2bb04547bf39ceb2495ff65, type: 3}
-  - generationID: 4
+  - generationID: 0
     prefab:
       tileID: 
       tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
+      prefab: {fileID: 0}
+      generationID: 0
       spawnChance: 0
     tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}
   generationLayers:
@@ -288,17 +289,7 @@ MonoBehaviour:
     maxDepthInclusive: 549
     minDepthInclusive: 545
   - layerID: Dirt Transition Layer
-    prefabs:
-    - tileID: Dirt
-      tile: {fileID: 0}
-      prefab: {fileID: 4775010030039817798, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}
-      generationID: 2
-      spawnChance: 0
-    - tileID: Stone
-      tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
-      spawnChance: 0.3
+    prefabs: []
     tile:
     - tile: {fileID: 7614399429702912483, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}
       spawnChance: 0
@@ -307,17 +298,7 @@ MonoBehaviour:
     maxDepthInclusive: 544
     minDepthInclusive: 539
   - layerID: Stone Transition Layer
-    prefabs:
-    - tileID: Stone
-      tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
-      spawnChance: 0
-    - tileID: Dirt
-      tile: {fileID: 0}
-      prefab: {fileID: 4775010030039817798, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}
-      generationID: 2
-      spawnChance: 0.25
+    prefabs: []
     tile:
     - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
       spawnChance: 0
@@ -326,12 +307,7 @@ MonoBehaviour:
     maxDepthInclusive: 538
     minDepthInclusive: 528
   - layerID: Sparse Copper Layer
-    prefabs:
-    - tileID: Stone
-      tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
-      spawnChance: 0
+    prefabs: []
     tile:
     - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
       spawnChance: 0
@@ -342,12 +318,7 @@ MonoBehaviour:
     maxDepthInclusive: 527
     minDepthInclusive: 500
   - layerID: Copper Layer
-    prefabs:
-    - tileID: Stone
-      tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
-      spawnChance: 0
+    prefabs: []
     tile:
     - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
       spawnChance: 0
@@ -360,12 +331,7 @@ MonoBehaviour:
     maxDepthInclusive: 499
     minDepthInclusive: 481
   - layerID: Sparse Iron Layer
-    prefabs:
-    - tileID: Stone
-      tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
-      spawnChance: 0
+    prefabs: []
     tile:
     - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
       spawnChance: 0
@@ -378,12 +344,7 @@ MonoBehaviour:
     maxDepthInclusive: 480
     minDepthInclusive: 461
   - layerID: Iron Layer
-    prefabs:
-    - tileID: Stone
-      tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
-      spawnChance: 0
+    prefabs: []
     tile:
     - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
       spawnChance: 0
@@ -394,12 +355,7 @@ MonoBehaviour:
     maxDepthInclusive: 460
     minDepthInclusive: 441
   - layerID: Stone Layer
-    prefabs:
-    - tileID: Stone
-      tile: {fileID: 0}
-      prefab: {fileID: 2607782181782974689, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      generationID: 3
-      spawnChance: 0
+    prefabs: []
     tile:
     - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
       spawnChance: 0
@@ -407,6 +363,7 @@ MonoBehaviour:
       spawnChance: 0.067
     maxDepthInclusive: 440
     minDepthInclusive: 0
+  assetSaveManager: {fileID: 1910276222}
   xWidth: 200
   yHeight: 550
   player: {fileID: 630518095}
@@ -766,6 +723,7 @@ GameObject:
   - component: {fileID: 630518103}
   - component: {fileID: 630518102}
   - component: {fileID: 630518101}
+  - component: {fileID: 630518104}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -922,9 +880,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77b0f890d2826654ea3b91f047663e9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMiningClass: {fileID: 0}
-  PlayerControllerClass: {fileID: 0}
-  PlayerInventoryClass: {fileID: 0}
   layerMask:
     serializedVersion: 2
     m_Bits: 1024
@@ -960,6 +915,21 @@ MonoBehaviour:
   possibleItems:
   - {fileID: 1837170374}
   - {fileID: 571506902}
+--- !u!114 &630518104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 630518095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df8b8b56f5349294db2df8fe6989e533, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMaximumStamina: 400
+  currentMaximumHeat: 47
+  worldGeneratorClass: {fileID: 238746329}
 --- !u!1 &635738657
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,6 +1443,8 @@ Transform:
   - {fileID: 238746328}
   - {fileID: 978507161}
   - {fileID: 655185940}
+  - {fileID: 1876754793}
+  - {fileID: 1910276221}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1862,6 +1834,174 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18266b7f0682b214f881e2c786cf59dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1876754792
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1876754793}
+  - component: {fileID: 1876754797}
+  - component: {fileID: 1876754796}
+  - component: {fileID: 1876754794}
+  m_Layer: 10
+  m_Name: Vending Machine
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1876754793
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876754792}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 106.83, y: 551.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1390882764}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1876754794
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876754792}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2, y: 1}
+  m_EdgeRadius: 0
+--- !u!114 &1876754796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876754792}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b005058dd399fd840b7917913998ad6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiElement: {fileID: 0}
+--- !u!212 &1876754797
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876754792}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: d54163bc3f8579944a2b8b315e7034dd, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &1910276220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1910276221}
+  - component: {fileID: 1910276222}
+  m_Layer: 0
+  m_Name: AssetSerializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1910276221
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910276220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1390882764}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1910276222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1910276220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 840c9b6de72becf4bb10ad2980f596bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerBaseClass: {fileID: 630518101}
+  worldGeneratorClass: {fileID: 238746329}
 --- !u!1 &1977136712
 GameObject:
   m_ObjectHideFlags: 0

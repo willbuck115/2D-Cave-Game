@@ -6,9 +6,14 @@ public class ClassicWorldGeneration : MonoBehaviour
 {
     // Array of integers that correlate to what tile should be loaded there.
     // If zero, no tile will be loaded
+
+    // For Debug purposes
+    [SerializeField] public bool shouldLoadFromFile = true;
+
     public int[,] tileMap = null;
     public GeneratableTile[] generatableTiles;
     public Layer[] generationLayers;
+    [SerializeField] private AssetSaveManager assetSaveManager;
 
     public int xWidth, yHeight;
     [SerializeField] private GameObject player;
@@ -22,7 +27,7 @@ public class ClassicWorldGeneration : MonoBehaviour
             g.LoadValues();
         }
 
-        if (tileMap == null) {
+        if (!assetSaveManager.InitaliseLoad("/TileMap") || !shouldLoadFromFile) {
             tileMap = new int[xWidth, yHeight];
             // Generate a new map
             for(int x = 0; x < xWidth; x++) {
@@ -34,10 +39,21 @@ public class ClassicWorldGeneration : MonoBehaviour
                     }
                 }
             }
+            if(shouldLoadFromFile)
+                assetSaveManager.Save(tileMap);
+        } else {
+            // InitialiseLoad returns true
+            tileMap = assetSaveManager.loadedTileMap;
         }
 
         // Enable player after array has been generated so tiles can be instantiated
         player.SetActive(true);
+    }
+
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.L)) {
+            assetSaveManager.Save(tileMap);
+        }
     }
 }
 

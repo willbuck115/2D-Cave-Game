@@ -5,16 +5,18 @@ using UnityEngine;
 
 public class PlayerBase : MonoBehaviour
 {
-    public PlayerMining playerMiningClass;
-    public PlayerController PlayerControllerClass;
-    public PlayerInventory PlayerInventoryClass;
+    internal PlayerMining playerMiningClass;
+    internal PlayerController playerControllerClass;
+    internal PlayerInventory playerInventoryClass;
+    internal PlayerLimits playerLimitClass;
 
-    public LayerMask layerMask;
+    [SerializeField] internal LayerMask layerMask;
 
     private void Awake() {
         playerMiningClass = GetComponent<PlayerMining>();
-        PlayerControllerClass = GetComponent<PlayerController>();
-        PlayerInventoryClass = GetComponent<PlayerInventory>();
+        playerControllerClass = GetComponent<PlayerController>();
+        playerInventoryClass = GetComponent<PlayerInventory>();
+        playerLimitClass = GetComponent<PlayerLimits>();
     }
 
     private void Update() {
@@ -30,7 +32,7 @@ public class PlayerBase : MonoBehaviour
         }
     }
 
-    public void UpdatePickaxeSprite() {
+    internal void UpdatePickaxeSprite() {
         //throw new NotImplementedException();
     }
 }

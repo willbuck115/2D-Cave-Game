@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     [Range(0, 200)] private int xMinRenderValue, xMaxRenderValue;
     [Range(0, 550)] private int yMinRenderValue, yMaxRenderValue;
 
-    public ClassicWorldGeneration IWorldGeneratorClass;
+    [SerializeField] internal ClassicWorldGeneration IWorldGeneratorClass;
     private Tile[,] loadedTiles;
     [SerializeField] private LayerMask layerMask;
 
@@ -68,6 +68,7 @@ public class PlayerController : MonoBehaviour {
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
         if((Vector2)transform.position == targetPosition) {
             isAtTarget = true;
+            float x = playerBaseClass.playerLimitClass.CurrentHeat;
             LoadNewTiles();
         }
     }
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour {
             targetPosition = transform.position + dir;
             isAtTarget = false;
             isRunningCoroutine = false;
+            playerBaseClass.playerLimitClass.OnStaminaUpdate(-1);
             yield break;
         } else if (hit.collider.tag == "MinableTile") {
             Tile t = hit.collider.GetComponent<Tile>();
@@ -87,6 +89,7 @@ public class PlayerController : MonoBehaviour {
                 yield return new WaitWhile(() => playerBaseClass.playerMiningClass.isMiningTile);
                     IWorldGeneratorClass.tileMap[(int)t.indexInNoiseArray.x, (int)t.indexInNoiseArray.y] = 0;
                     t.Mined(collectables);
+                    playerBaseClass.playerLimitClass.OnStaminaUpdate(-(int)t.mineTime);
             }
         }
 

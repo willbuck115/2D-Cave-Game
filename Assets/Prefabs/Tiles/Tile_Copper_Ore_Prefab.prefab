@@ -145,11 +145,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generationID: 5
-  id: Copper_Ore
   prefab: {fileID: 7645222618086096608}
   indexInNoiseArray: {x: 0, y: 0}
   isLoaded: 1
   hardness: 1
-  mineTime: 1
+  mineTime: 2
   dropItem: {fileID: 7296901947062211765, guid: 13ca0f6e1157f1344b8dd73464644fd7, type: 3}
   drops: 1
