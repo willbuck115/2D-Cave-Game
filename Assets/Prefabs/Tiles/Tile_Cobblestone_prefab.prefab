@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5288607922977748235}
   - component: {fileID: 5288607922977748228}
-  - component: {fileID: -663995718413270729}
   - component: {fileID: 7100788205187097248}
   - component: {fileID: 8792297769904811698}
   m_Layer: 9
@@ -85,27 +84,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &-663995718413270729
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5288607922977748229}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!114 &7100788205187097248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,16 +97,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generationID: 4
-  id: Cobblestone
   prefab: {fileID: 5288607922977748229}
   indexInNoiseArray: {x: 0, y: 0}
   isLoaded: 1
   hardness: 5
   mineTime: 5
-  dropItem:
-    numericID: 0
-    monetaryValue: 0
-    prefab: {fileID: 0}
+  dropItem: {fileID: 0}
   drops: 0
 --- !u!61 &8792297769904811698
 BoxCollider2D:

@@ -24,7 +24,8 @@ public class Tile : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D collision) {
-        Destroy(this.gameObject);
+        print("destroy");
+        Destroy(gameObject);
     }
 
     public void Mined(Transform p) {

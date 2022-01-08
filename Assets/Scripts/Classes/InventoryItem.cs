@@ -7,9 +7,9 @@ public class InventoryItem : MonoBehaviour {
     public float monetaryValue;
     public GameObject prefab;
 
-    private void OnTriggerEnter2D(Collider2D collision) {
+    private void OnCollisionEnter2D(Collision2D collision) {
         if (collision.transform.name == "Player") {
-            PlayerInventory inventory = collision.GetComponent<PlayerInventory>();
+            PlayerInventory inventory = collision.gameObject.GetComponent<PlayerInventory>();
             inventory.PickUpItem(this);
         }
     }

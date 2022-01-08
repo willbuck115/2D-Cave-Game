@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
                 // go downwards
                 isRunningCoroutine = true;
                 StartCoroutine(TriggerMovement(Vector2.down));
-            } else if (Input.GetKey(up) && transform.position.y <= 550) { // only go up if not at top end of world
+            } else if (Input.GetKey(up) && (int)transform.position.y <= 550) { // only go up if not at top end of world
                 isRunningCoroutine = true;
                 StartCoroutine(TriggerMovement(Vector2.up));
             }
@@ -118,6 +118,9 @@ public class PlayerController : MonoBehaviour {
 
         if (yMaxRenderValue > IWorldGeneratorClass.yHeight)
             yMaxRenderValue = IWorldGeneratorClass.yHeight;
+
+        print(yMinRenderValue);
+        print(yMaxRenderValue);
 
         // Checking if within bounds of render distance on xCord
         for (int x = xMinRenderValue; x <= xMaxRenderValue; x++) {
