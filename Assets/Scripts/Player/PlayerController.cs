@@ -39,15 +39,15 @@ public class PlayerController : MonoBehaviour {
         }
 
         if (!isRunningCoroutine) {
-            if (Input.GetKey(left)) {
+            if (Input.GetKey(left) && (int)transform.position.x > 49) {
                 // go left
                 isRunningCoroutine = true;
                 StartCoroutine(TriggerMovement(Vector2.left));
-            } else if (Input.GetKey(right)) {
+            } else if (Input.GetKey(right) && (int)transform.position.x <= 149) {
                 // go right
                 isRunningCoroutine = true;
                 StartCoroutine(TriggerMovement(Vector2.right));
-            } else if (Input.GetKey(down)) {
+            } else if (Input.GetKey(down) && (int)transform.position.y > 50) {
                 // go downwards
                 isRunningCoroutine = true;
                 StartCoroutine(TriggerMovement(Vector2.down));
