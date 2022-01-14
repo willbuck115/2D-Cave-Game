@@ -51,6 +51,12 @@ public class Sky : MonoBehaviour {
     }
 
     private void ActionWeather(float floatChance) {
+        if (cloudParent.childCount > 0) { 
+            for(int i = 0; i < cloudParent.childCount; i++) {
+                Destroy(cloudParent.GetChild(i).gameObject);
+            }
+        }
+
         // calculates clouds to generate trippling the value of 2 - luck (will be a number in the range 1, 2)
         cloudsToGenerate = (int)(baseCloudsToGenerate * (2*(2 - floatChance)));
 
@@ -70,6 +76,7 @@ public class Sky : MonoBehaviour {
         x = x - xDifferential;
 
         for (int i = 0; i < cloudsToGenerate; i++) {
+            // instantiate and edit object properties
             x = x + xDifferential;
             float yValue = Random.Range(minY, maxY);
             int selPrefab = Random.Range(0, cloudPrefabs.Length - 1);

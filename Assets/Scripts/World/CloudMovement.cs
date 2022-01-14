@@ -6,7 +6,7 @@ public class CloudMovement : MonoBehaviour {
     internal float speed;
 
     private void Update() {
-        transform.position += Vector3.right * speed;
+        transform.position += Vector3.right * speed * Time.timeScale;
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
