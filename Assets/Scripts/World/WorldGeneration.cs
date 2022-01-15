@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ClassicWorldGeneration : MonoBehaviour
+public class WorldGeneration : MonoBehaviour
 {
     // Array of integers that correlate to what tile should be loaded there.
     // If zero, no tile will be loaded
@@ -18,36 +18,44 @@ public class ClassicWorldGeneration : MonoBehaviour
     public int xWidth, yHeight;
     [SerializeField] private GameObject player;
 
+    // New world generation variables
+
+    public bool useNewGeneration = false;
+
     private void Start() {
 
-        foreach (Layer l in generationLayers) {
-            l.LoadValues();
-        }
-        foreach (GeneratableTile g in generatableTiles) {
-            g.LoadValues();
-        }
+        if (useNewGeneration) {
+            foreach (Layer l in generationLayers) {
+                l.LoadValues();
+            }
+            foreach (GeneratableTile g in generatableTiles) {
+                g.LoadValues();
+            }
 
-        if (!assetSaveManager.InitaliseLoad("/TileMap") || !shouldLoadFromFile) {
-            tileMap = new int[xWidth, yHeight];
-            // Generate a new map
-            for(int x = 0; x < xWidth; x++) {
-                for(int y = 0; y < yHeight; y++) {
-                    foreach(Layer l in generationLayers) {
-                        if (l.IsWithinLayer(y)) {
-                            tileMap[x, y] = l.ChooseTile();
+            if (!assetSaveManager.InitaliseLoad("/TileMap") || !shouldLoadFromFile) {
+                tileMap = new int[xWidth, yHeight];
+                // Generate a new map
+                for (int x = 0; x < xWidth; x++) {
+                    for (int y = 0; y < yHeight; y++) {
+                        foreach (Layer l in generationLayers) {
+                            if (l.IsWithinLayer(y)) {
+                                tileMap[x, y] = l.ChooseTile();
+                            }
                         }
                     }
                 }
+                if (shouldLoadFromFile)
+                    assetSaveManager.Save(tileMap);
+            } else {
+                // InitialiseLoad returns true
+                tileMap = assetSaveManager.loadedTileMap;
             }
-            if(shouldLoadFromFile)
-                assetSaveManager.Save(tileMap);
-        } else {
-            // InitialiseLoad returns true
-            tileMap = assetSaveManager.loadedTileMap;
-        }
 
-        // Enable player after array has been generated so tiles can be instantiated
-        player.SetActive(true);
+            // Enable player after array has been generated so tiles can be instantiated
+            player.SetActive(true);
+        } else {
+
+        }
     }
 
     private void Update() {
@@ -135,3 +143,5 @@ public class TileChance {
     public Tile tile;
     [Range(0,1)] public float spawnChance;
 }
+
+// Newer noise based generation

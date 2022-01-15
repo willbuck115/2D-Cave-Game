@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
     [Range(0, 200)] private int xMinRenderValue, xMaxRenderValue;
     [Range(0, 550)] private int yMinRenderValue, yMaxRenderValue;
 
-    [SerializeField] internal ClassicWorldGeneration IWorldGeneratorClass;
+    [SerializeField] internal WorldGeneration IWorldGeneratorClass;
     private Tile[,] loadedTiles;
     [SerializeField] private LayerMask layerMask;
 

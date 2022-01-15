@@ -223,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eec15b33d5204941859a693d74bb3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldLoadFromFile: 0
+  shouldLoadFromFile: 1
   generatableTiles:
   - generationID: 0
     prefab:
@@ -273,94 +273,121 @@ MonoBehaviour:
       generationID: 0
       spawnChance: 0
     tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}
+  - generationID: 0
+    prefab:
+      tileID: 
+      tile: {fileID: 0}
+      prefab: {fileID: 0}
+      generationID: 0
+      spawnChance: 0
+    tile: {fileID: 7080124934988883242, guid: d9f2e3dc125e0764ebe07e4cd5542b86, type: 3}
+  - generationID: 0
+    prefab:
+      tileID: 
+      tile: {fileID: 0}
+      prefab: {fileID: 0}
+      generationID: 0
+      spawnChance: 0
+    tile: {fileID: 2993485162423908741, guid: 03076be13e33e9b4ea81dc6023fff32b, type: 3}
+  - generationID: 0
+    prefab:
+      tileID: 
+      tile: {fileID: 0}
+      prefab: {fileID: 0}
+      generationID: 0
+      spawnChance: 0
+    tile: {fileID: 1957515111675306692, guid: eec43c0f16d5a894abcf1dca05933613, type: 3}
+  - generationID: 0
+    prefab:
+      tileID: 
+      tile: {fileID: 0}
+      prefab: {fileID: 0}
+      generationID: 0
+      spawnChance: 0
+    tile: {fileID: 7154401677376879353, guid: 05641a560d1c89f439eeac39a2087258, type: 3}
+  - generationID: 0
+    prefab:
+      tileID: 
+      tile: {fileID: 0}
+      prefab: {fileID: 0}
+      generationID: 0
+      spawnChance: 0
+    tile: {fileID: 7307654951329906603, guid: 894c679ecf15f544d913deb80329b92f, type: 3}
   generationLayers:
   - layerID: Overworld
     prefabs: []
     tile:
-    - tile: {fileID: 3352106871575457813, guid: 7083ef464d59292489304f229c875687, type: 3}
-      spawnChance: 0
+    - {tile: {fileID: 3352106871575457813, guid: 7083ef464d59292489304f229c875687, type: 3}, spawnChance: 0}
     maxDepthInclusive: 550
     minDepthInclusive: 550
   - layerID: Dirt Layer
     prefabs: []
     tile:
-    - tile: {fileID: 7614399429702912483, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}
-      spawnChance: 0
+    - {tile: {fileID: 7614399429702912483, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}, spawnChance: 0}
     maxDepthInclusive: 549
     minDepthInclusive: 545
   - layerID: Dirt Transition Layer
     prefabs: []
     tile:
-    - tile: {fileID: 7614399429702912483, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}
-      spawnChance: 0
-    - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      spawnChance: 0.25
+    - {tile: {fileID: 7614399429702912483, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}, spawnChance: 0}
+    - {tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}, spawnChance: 0.25}
     maxDepthInclusive: 544
     minDepthInclusive: 539
   - layerID: Stone Transition Layer
     prefabs: []
     tile:
-    - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      spawnChance: 0
-    - tile: {fileID: 7614399429702912483, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}
-      spawnChance: 0.25
+    - {tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}, spawnChance: 0}
+    - {tile: {fileID: 7614399429702912483, guid: e8f8deea2e74a4640a05fc21fd5a6788, type: 3}, spawnChance: 0.25}
     maxDepthInclusive: 538
     minDepthInclusive: 528
   - layerID: Sparse Copper Layer
     prefabs: []
     tile:
-    - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      spawnChance: 0
-    - tile: {fileID: 1750055218117441999, guid: 01773ab8c2bb04547bf39ceb2495ff65, type: 3}
-      spawnChance: 0.01
-    - tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}
-      spawnChance: 0.001
+    - {tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}, spawnChance: 0}
+    - {tile: {fileID: 1750055218117441999, guid: 01773ab8c2bb04547bf39ceb2495ff65, type: 3}, spawnChance: 0.01}
+    - {tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}, spawnChance: 0.001}
     maxDepthInclusive: 527
     minDepthInclusive: 500
   - layerID: Copper Layer
     prefabs: []
     tile:
-    - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      spawnChance: 0
-    - tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}
-      spawnChance: 0.067
-    - tile: {fileID: 1750055218117441999, guid: 01773ab8c2bb04547bf39ceb2495ff65, type: 3}
-      spawnChance: 0.04
-    - tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}
-      spawnChance: 0.002
+    - {tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}, spawnChance: 0}
+    - {tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}, spawnChance: 0.067}
+    - {tile: {fileID: 1750055218117441999, guid: 01773ab8c2bb04547bf39ceb2495ff65, type: 3}, spawnChance: 0.04}
+    - {tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}, spawnChance: 0.002}
     maxDepthInclusive: 499
     minDepthInclusive: 481
   - layerID: Sparse Iron Layer
     prefabs: []
     tile:
-    - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      spawnChance: 0
-    - tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}
-      spawnChance: 0.067
-    - tile: {fileID: 1750055218117441999, guid: 01773ab8c2bb04547bf39ceb2495ff65, type: 3}
-      spawnChance: 0.01
-    - tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}
-      spawnChance: 0.04
+    - {tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}, spawnChance: 0}
+    - {tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}, spawnChance: 0.067}
+    - {tile: {fileID: 1750055218117441999, guid: 01773ab8c2bb04547bf39ceb2495ff65, type: 3}, spawnChance: 0.01}
+    - {tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}, spawnChance: 0.04}
     maxDepthInclusive: 480
     minDepthInclusive: 461
   - layerID: Iron Layer
     prefabs: []
     tile:
-    - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      spawnChance: 0
-    - tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}
-      spawnChance: 0.01
-    - tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}
-      spawnChance: 0.01
+    - {tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}, spawnChance: 0}
+    - {tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}, spawnChance: 0.01}
+    - {tile: {fileID: 2386226576114472307, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}, spawnChance: 0.01}
+    - {tile: {fileID: 1750055218117441999, guid: 01773ab8c2bb04547bf39ceb2495ff65, type: 3}, spawnChance: 0.01}
     maxDepthInclusive: 460
     minDepthInclusive: 441
+  - layerID: Sparse Silver Layer
+    prefabs: []
+    tile:
+    - {tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}, spawnChance: 0}
+    - {tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}, spawnChance: 0.067}
+    - {tile: {fileID: 7080124934988883242, guid: d9f2e3dc125e0764ebe07e4cd5542b86, type: 3}, spawnChance: 0.067}
+    maxDepthInclusive: 440
+    minDepthInclusive: 421
   - layerID: Stone Layer
     prefabs: []
     tile:
-    - tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}
-      spawnChance: 0
-    - tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}
-      spawnChance: 0.067
+    - {tile: {fileID: 6224129261741848526, guid: 5893427623fe2614e8b391c732a2085f, type: 3}, spawnChance: 0}
+    - {tile: {fileID: 7100788205187097248, guid: 8c69c8f92a173b24188ef48bf5f346ab, type: 3}, spawnChance: 0.067}
     maxDepthInclusive: 440
     minDepthInclusive: 0
   assetSaveManager: {fileID: 1910276222}

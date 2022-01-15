@@ -23,7 +23,7 @@ public class PlayerLimits : MonoBehaviour {
     [SerializeField] internal int currentMaximumStamina = 200;
     [SerializeField] internal int currentMaximumHeat = 42;
 
-    [SerializeField] private ClassicWorldGeneration worldGeneratorClass;
+    [SerializeField] private WorldGeneration worldGeneratorClass;
 
     private void Start() {
         temperatureToYMap = new float[worldGeneratorClass.yHeight];

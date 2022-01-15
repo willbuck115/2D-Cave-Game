@@ -10,7 +10,7 @@ public class AssetSaveManager : MonoBehaviour
 
     // Classes to redirect loaded information to
     [SerializeField] private PlayerBase playerBaseClass;
-    [SerializeField] private ClassicWorldGeneration worldGeneratorClass;
+    [SerializeField] private WorldGeneration worldGeneratorClass;
 
     private readonly string floatMapPath = "/TileMap";
     private readonly string playerSavePath = "/PlayerSaveInformation";
