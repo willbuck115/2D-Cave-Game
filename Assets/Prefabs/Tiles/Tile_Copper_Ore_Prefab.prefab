@@ -17,7 +17,7 @@ GameObject:
   m_TagString: MinableTile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7645222618086096622
 Transform:
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50726675fba95864587b19fb93cb86a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  generationID: 5
+  generationID: 4
   prefab: {fileID: 7645222618086096608}
   indexInNoiseArray: {x: 0, y: 0}
   isLoaded: 1

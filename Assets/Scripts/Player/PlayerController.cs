@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,21 +15,49 @@ public class PlayerController : MonoBehaviour {
     [Range(0, 200)] private int xMinRenderValue, xMaxRenderValue;
     [Range(0, 550)] private int yMinRenderValue, yMaxRenderValue;
 
-    [SerializeField] internal WorldGeneration IWorldGeneratorClass;
+    [SerializeField] internal WorldGeneration worldGeneratorClass;
     private Tile[,] loadedTiles;
     [SerializeField] private LayerMask layerMask;
 
     private PlayerBase playerBaseClass;
     [SerializeField] private Transform collectables;
 
-
+    // needs to be removed
+    public bool debugworld;
+    public GameObject mapSprite;
 
     private void Start() {
         playerBaseClass = GetComponent<PlayerBase>();
-        loadedTiles = new Tile[IWorldGeneratorClass.xWidth, IWorldGeneratorClass.yHeight];
+        loadedTiles = new Tile[worldGeneratorClass.xWidth, worldGeneratorClass.yHeight];
+        if (debugworld)
+            LoadDebugWorld();
+        else
+            LoadNewTiles();
 
-        LoadNewTiles();
+    }
 
+    private void LoadDebugWorld() {
+        // create a texture for the map
+        Texture2D mapTexture = new Texture2D(worldGeneratorClass.xWidth, worldGeneratorClass.yHeight);
+        Color[] colours = new Color[worldGeneratorClass.xWidth * worldGeneratorClass.yHeight];
+        
+        for(int x = 0; x < worldGeneratorClass.xWidth; x++) {
+            for(int y = 0; y < worldGeneratorClass.yHeight; y++) {
+                if (worldGeneratorClass.tileMap[x, y] == 0) {
+                    colours[x + worldGeneratorClass.xWidth * y] = Color.black;
+                    //mapTexture.SetPixel(x, y, Color.black);
+                } else {
+                    colours[x + worldGeneratorClass.xWidth * y] = worldGeneratorClass.generatableTiles[worldGeneratorClass.tileMap[x, y] - 1].colour;
+                    //mapTexture.SetPixel(x, y, worldGeneratorClass.generatableTiles[worldGeneratorClass.tileMap[x, y] - 1].colour);
+                }
+            }
+        }
+        mapTexture.SetPixels(colours);
+        mapTexture.filterMode = FilterMode.Point;
+        mapTexture.Apply();
+        SpriteRenderer rend = mapSprite.GetComponent<SpriteRenderer>();
+        Sprite sprite = Sprite.Create(mapTexture, new Rect(0, 0, worldGeneratorClass.xWidth, worldGeneratorClass.yHeight), Vector2.zero, 1f);
+        rend.sprite = sprite;
     }
 
     private void Update() {
@@ -56,20 +85,17 @@ public class PlayerController : MonoBehaviour {
                 StartCoroutine(TriggerMovement(Vector2.up));
             }
         }
-
-        /*if (Input.GetKeyDown(jump) && IsGrounded()) {
-            rb.velocity = Vector2.up * jumpForce;
-        }
-        */
     }
 
     private void UpdatePosition() {
         float step = speed * Time.deltaTime;
         transform.position = Vector2.MoveTowards(transform.position, targetPosition, step);
-        if((Vector2)transform.position == targetPosition) {
+        if ((Vector2)transform.position == targetPosition) {
             isAtTarget = true;
             float x = playerBaseClass.playerLimitClass.CurrentHeat;
-            LoadNewTiles();
+            if (!debugworld) {
+                LoadNewTiles();
+            }
         }
     }
 
@@ -87,7 +113,7 @@ public class PlayerController : MonoBehaviour {
             Tile t = hit.collider.GetComponent<Tile>();
             if (playerBaseClass.playerMiningClass.AttemptToMineTile(t)) {
                 yield return new WaitWhile(() => playerBaseClass.playerMiningClass.isMiningTile);
-                    IWorldGeneratorClass.tileMap[(int)t.indexInNoiseArray.x, (int)t.indexInNoiseArray.y] = 0;
+                    worldGeneratorClass.tileMap[(int)t.indexInNoiseArray.x, (int)t.indexInNoiseArray.y] = 0;
                     t.Mined(collectables);
                     playerBaseClass.playerLimitClass.OnStaminaUpdate(-(int)t.mineTime);
             }
@@ -110,14 +136,14 @@ public class PlayerController : MonoBehaviour {
         if (xMinRenderValue < 0)
             xMinRenderValue = 0;
 
-        if (xMaxRenderValue > IWorldGeneratorClass.xWidth)
-            xMaxRenderValue = IWorldGeneratorClass.xWidth;
+        if (xMaxRenderValue > worldGeneratorClass.xWidth)
+            xMaxRenderValue = worldGeneratorClass.xWidth;
 
         if (yMinRenderValue < 0)
             yMinRenderValue = 0;
 
-        if (yMaxRenderValue > IWorldGeneratorClass.yHeight)
-            yMaxRenderValue = IWorldGeneratorClass.yHeight;
+        if (yMaxRenderValue > worldGeneratorClass.yHeight)
+            yMaxRenderValue = worldGeneratorClass.yHeight;
 
         print(yMinRenderValue);
         print(yMaxRenderValue);
@@ -127,14 +153,14 @@ public class PlayerController : MonoBehaviour {
             // Checking if within bounds of render distance on yCord
             for (int y = yMinRenderValue; y <= yMaxRenderValue; y++) {
                 // Checking to make sure the area is within the map
-                if (IWorldGeneratorClass.tileMap.GetLength(0) > x && IWorldGeneratorClass.tileMap.GetLength(1) > y) {
+                if (worldGeneratorClass.tileMap.GetLength(0) > x && worldGeneratorClass.tileMap.GetLength(1) > y) {
                     // Check to make sure tile has not already loaded
                     if (loadedTiles[x, y] == null) {
                         // If the tile exists (isn't a 0 tile)
-                        if (IWorldGeneratorClass.tileMap[x, y] != 0) {
-                            foreach (GeneratableTile t in IWorldGeneratorClass.generatableTiles) {
-                                if (t.generationID == IWorldGeneratorClass.tileMap[x, y]) {
-                                    GameObject tile = Instantiate(t.prefab.prefab, IWorldGeneratorClass.transform);
+                        if (worldGeneratorClass.tileMap[x, y] != 0) {
+                            foreach (GeneratableTile t in worldGeneratorClass.generatableTiles) {
+                                if (t.tileIndex == worldGeneratorClass.tileMap[x, y]) {
+                                    GameObject tile = Instantiate(t.prefab, worldGeneratorClass.transform);
                                     tile.transform.position = new Vector2(x + 1, y + 1);
                                     Tile tileComponent = tile.GetComponent<Tile>();
                                     loadedTiles[x, y] = tileComponent;

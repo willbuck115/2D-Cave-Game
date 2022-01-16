@@ -1,0 +1,78 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92caf5e22d474864f8fee4693d274af4, type: 3}
+  m_Name: Iron Ore Tile
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 2386226576114472269, guid: 63f238dbadf1ab64888de8910880ebc3, type: 3}
+  generationGradient:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.00000001828895
+      outSlope: 0.00000001828895
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 302.72034
+      value: 0.000005536437
+      inSlope: 0.000000027333865
+      outSlope: 0.000000027333865
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 800
+      value: 0
+      inSlope: -0.00000008200588
+      outSlope: -0.00000008200588
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 850.4927
+      value: 0.0068328865
+      inSlope: -0.000015929367
+      outSlope: -0.000015929367
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.03617952
+      outWeight: 0.7124085
+    - serializedVersion: 3
+      time: 968
+      value: 0
+      inSlope: 0.00000003896501
+      outSlope: 0.00000003896501
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.08882593
+      outWeight: 1
+    - serializedVersion: 3
+      time: 1050
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  tileIndex: 5
+  commit: 1
+  colour: {r: 1, g: 0.495283, b: 0.495283, a: 1}

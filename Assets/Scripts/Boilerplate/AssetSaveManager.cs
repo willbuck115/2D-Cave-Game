@@ -15,7 +15,7 @@ public class AssetSaveManager : MonoBehaviour
     private readonly string floatMapPath = "/TileMap";
     private readonly string playerSavePath = "/PlayerSaveInformation";
 
-    [HideInInspector] public int[,] loadedTileMap;
+    [HideInInspector] public int[,] loadedTileMap = null;
     [HideInInspector] public SaveablePlayerInformation loadedPlayerInformation;
 
     public void Save(int[,] tileMap = null, SaveablePlayerInformation saveablePlayerInformation = null) {

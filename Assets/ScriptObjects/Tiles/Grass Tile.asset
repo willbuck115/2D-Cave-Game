@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92caf5e22d474864f8fee4693d274af4, type: 3}
+  m_Name: Grass Tile
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 157363281425446203, guid: 7083ef464d59292489304f229c875687, type: 3}
+  generationGradient:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  tileIndex: 1
+  commit: 1
+  colour: {r: 0.11748052, g: 1, b: 0, a: 1}

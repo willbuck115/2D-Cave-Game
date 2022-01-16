@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class WorldGeneration : MonoBehaviour
-{
+public class WorldGeneration : MonoBehaviour {
     // Array of integers that correlate to what tile should be loaded there.
     // If zero, no tile will be loaded
 
@@ -11,137 +8,69 @@ public class WorldGeneration : MonoBehaviour
     [SerializeField] public bool shouldLoadFromFile = true;
 
     public int[,] tileMap = null;
-    public GeneratableTile[] generatableTiles;
-    public Layer[] generationLayers;
+    public GeneratableTile[] generatableTiles; // stone not kept here
+    public GeneratableTile stoneTile;
     [SerializeField] private AssetSaveManager assetSaveManager;
 
     public int xWidth, yHeight;
     [SerializeField] private GameObject player;
 
-    // New world generation variables
-
-    public bool useNewGeneration = false;
-
     private void Start() {
-
-        if (useNewGeneration) {
-            foreach (Layer l in generationLayers) {
-                l.LoadValues();
+        if (shouldLoadFromFile) {
+            assetSaveManager.InitaliseLoad("/TileMap");
+            tileMap = assetSaveManager.loadedTileMap;
+            print(tileMap.Length);
+        } 
+        if (!shouldLoadFromFile || tileMap == null) {
+            tileMap = new int[xWidth, yHeight];
+            // set default values
+            // sets grass layer
+            for (int x = 0; x < xWidth; x++) {
+                int y = 1049;
+                Debug.Log(x + " " + y);
+                tileMap[x, y] = 1;
             }
-            foreach (GeneratableTile g in generatableTiles) {
-                g.LoadValues();
+            // sets dirt layer
+            for (int x = 0; x < xWidth; x++) {
+                for (int y = 1000; y < 1049; y++) {
+                    tileMap[x, y] = new int();
+                    tileMap[x, y] = 2;
+                }
+            }
+            // sets stone layer
+            for (int x = 0; x < xWidth; x++) {
+                for (int y = 0; y < yHeight; y++) {
+                    int index = stoneTile.ChooseTile(y);
+                    if (index != 0) {
+                        tileMap[x, y] = index;
+                    }
+                }
             }
 
-            if (!assetSaveManager.InitaliseLoad("/TileMap") || !shouldLoadFromFile) {
-                tileMap = new int[xWidth, yHeight];
-                // Generate a new map
-                for (int x = 0; x < xWidth; x++) {
-                    for (int y = 0; y < yHeight; y++) {
-                        foreach (Layer l in generationLayers) {
-                            if (l.IsWithinLayer(y)) {
-                                tileMap[x, y] = l.ChooseTile();
-                            }
+
+            // Generate the map changes
+
+            for (int x = 0; x < xWidth; x++) {
+                for (int y = 0; y < yHeight; y++) {
+                    int index = 0;
+                    foreach (GeneratableTile t in generatableTiles) {
+                        index = t.ChooseTile(y);
+                        if (index != 0) {
+                            tileMap[x, y] = index;
                         }
                     }
                 }
-                if (shouldLoadFromFile)
-                    assetSaveManager.Save(tileMap);
-            } else {
-                // InitialiseLoad returns true
-                tileMap = assetSaveManager.loadedTileMap;
             }
-
-            // Enable player after array has been generated so tiles can be instantiated
-            player.SetActive(true);
-        } else {
-
         }
+
+        player.SetActive(true);
     }
 
+    // this is debug
     private void Update() {
         if (Input.GetKeyDown(KeyCode.L)) {
             assetSaveManager.Save(tileMap);
+            Debug.Log("REMOVE ME!");
         }
     }
 }
-
-[System.Serializable]
-public class GeneratableTile {
-    [HideInInspector] public int generationID;
-    [HideInInspector] public PrefabIDLink prefab;
-
-    public Tile tile;
-
-    public void LoadValues() {
-        generationID = tile.generationID;
-        prefab.prefab = tile.prefab;
-        prefab.tile = tile;
-    }
-    /*public GeneratableTile TileTypeCheck(int depth) {
-        // Check if depth is within bounds of this tile selector
-        if (depth < maxDepthExclusive - 1 && depth >= minDepthInclusive - 1) {
-            return this;
-        } else
-            return null;
-    }
-    */
-}
-
-[System.Serializable]
-public class Layer {
-    [SerializeField] private string layerID; // inspector use only
-
-    // prefabs[0] is the default, if no other chance is capitalized then it will use default
-    [HideInInspector] public PrefabIDLink[] prefabs;
-
-    public TileChance[] tile;
-    public int maxDepthInclusive;
-    public int minDepthInclusive;
-
-    public void LoadValues() {
-        prefabs = new PrefabIDLink[tile.Length];
-
-        for(int i = 0; i < prefabs.Length; i++) {
-            prefabs[i] = new PrefabIDLink();
-            prefabs[i].tile = tile[i].tile;
-            prefabs[i].generationID = tile[i].tile.generationID;
-            prefabs[i].spawnChance = tile[i].spawnChance;
-        }
-    }
-    public int ChooseTile() {
-        int objIndex = prefabs[0].generationID;
-        for (int i = 1; i < prefabs.Length; i++) {
-            float chance = Random.value;
-            if(chance < prefabs[i].spawnChance) {
-                // Pick this one
-                objIndex = prefabs[i].generationID;
-            }
-        }
-        // if at the end the objIndex has not been modified it will default to the prefab[0] generationID
-        return objIndex;
-    }
-    public bool IsWithinLayer(int yCord) {
-        if(yCord <= maxDepthInclusive - 1 && yCord >= minDepthInclusive - 1) {
-            return true;
-        }
-        return false;
-    }
-}
-
-[System.Serializable]
-public class PrefabIDLink {
-    [SerializeField] private string tileID; // inspector use only
-    [HideInInspector] public Tile tile;
-
-    [HideInInspector] public GameObject prefab;
-    [HideInInspector] public int generationID;
-    [Range(0,1)] public float spawnChance;
-}
-
-[System.Serializable]
-public class TileChance {
-    public Tile tile;
-    [Range(0,1)] public float spawnChance;
-}
-
-// Newer noise based generation
