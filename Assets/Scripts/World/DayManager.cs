@@ -5,9 +5,18 @@ using UnityEngine;
 public class DayManager : MonoBehaviour {
     internal decimal luck;
     internal Sky skyClass;
+    [SerializeField] private PlayerLimits playerLimitClass;
 
     internal int dayCount;
     // needs to be saved with playerdata
+
+    private float lastSleptTime;
+    // seconds
+    private float sleepTimeThreshold = 300;
+
+    // amount of days where the player has gone to sleep before the threshold, this will be used to calculate the days stamina
+    // for every day the player has good sleep this is minused by 1
+    internal int daysOfPoorSleep;
 
     [SerializeField] private GameObject transitionUI;
 
@@ -28,7 +37,11 @@ public class DayManager : MonoBehaviour {
         luck = GenerateLuck();
         skyClass = GetComponent<Sky>();
         skyClass.GenerateDailyWeather(luck / 2);
-
+        playerLimitClass.OnNewDayStart(daysOfPoorSleep);
+        if (daysOfPoorSleep > 0)
+            daysOfPoorSleep--;
+        
+        lastSleptTime = Time.time;
     }
 
     private IEnumerator DayTransition() {
@@ -48,5 +61,16 @@ public class DayManager : MonoBehaviour {
         // round to 2 decimal places
         decimal.Round(luck, 2);
         return luck;
+    }
+
+    internal void CalculateSleep() {
+        if((Time.time - lastSleptTime) >= sleepTimeThreshold) {
+            // player has slept in good time
+        } else {
+            // forfeit
+            daysOfPoorSleep++;
+        }
+
+        DayTransition();
     }
 }

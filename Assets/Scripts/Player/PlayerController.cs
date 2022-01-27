@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
                 // go downwards
                 isRunningCoroutine = true;
                 StartCoroutine(TriggerMovement(Vector2.down));
-            } else if (Input.GetKey(up) && (int)transform.position.y <= 550) { // only go up if not at top end of world
+            } else if (Input.GetKey(up) && (int)transform.position.y <= 1050) { // only go up if not at top end of world
                 isRunningCoroutine = true;
                 StartCoroutine(TriggerMovement(Vector2.up));
             }

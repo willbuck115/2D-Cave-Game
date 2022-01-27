@@ -75,4 +75,9 @@ public class PlayerLimits : MonoBehaviour {
             return true;
         }
     }
+
+    internal void OnNewDayStart(int poorSleepCount) {
+        if(poorSleepCount > 0)
+            currentStamina = currentMaximumStamina / poorSleepCount;
+    }
 }
