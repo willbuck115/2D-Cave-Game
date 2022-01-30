@@ -11,9 +11,7 @@ public class CloudMovement : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         // if entered cloud teleporter
-        print("col");
         if(collision.tag == "CloudTrigger") {
-            print("transport");
             transform.position = new Vector2(25, transform.position.y);
         }
     }

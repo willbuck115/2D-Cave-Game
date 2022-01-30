@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 43c84556184274f4caded42535a8f331
+guid: 8e9f5e6eda4805d48948a4889e24af15
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: -8618762157132499616
-    second: worldsprite_cloud_1
+    second: ambient_cloud_1
   - first:
       213: 2715141672405781689
-    second: worldsprite_cloud_2
+    second: ambient_cloud_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,7 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: worldsprite_cloud_1
+      name: ambient_cloud_1
       rect:
         serializedVersion: 2
         x: 0
@@ -118,7 +118,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: worldsprite_cloud_2
+      name: ambient_cloud_2
       rect:
         serializedVersion: 2
         x: 64

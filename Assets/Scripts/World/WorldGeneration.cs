@@ -19,8 +19,8 @@ public class WorldGeneration : MonoBehaviour {
         if (shouldLoadFromFile) {
             assetSaveManager.InitaliseLoad("/TileMap");
             tileMap = assetSaveManager.loadedTileMap;
-            print(tileMap.Length);
-        } 
+        }
+
         if (!shouldLoadFromFile || tileMap == null) {
             tileMap = new int[xWidth, yHeight];
             // set default values

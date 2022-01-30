@@ -22,11 +22,14 @@ public class PlayerController : MonoBehaviour {
     private PlayerBase playerBaseClass;
     [SerializeField] private Transform collectables;
 
+    private Animator animator;
+
     // needs to be removed
     public bool debugworld;
     public GameObject mapSprite;
 
     private void Start() {
+        animator = GetComponent<Animator>();
         playerBaseClass = GetComponent<PlayerBase>();
         loadedTiles = new Tile[worldGeneratorClass.xWidth, worldGeneratorClass.yHeight];
         if (debugworld)
@@ -61,6 +64,10 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Update() {
+        if (Input.GetKeyUp(right)) {
+            animator.SetBool("Walking Right", false);
+        }
+
         if (!isAtTarget) {
             // skip the rest of update
             UpdatePosition();
@@ -103,13 +110,26 @@ public class PlayerController : MonoBehaviour {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, .52f, layerMask);
         if (hit.collider == null) {
             // move
-            //transform.position += dir * speed * Time.deltaTime;
+            // set direction in animator
+            if (dir == Vector3.right) {
+                animator.SetBool("Walking Right", true);
+
+            } else if(dir == Vector3.left){
+                animator.SetTrigger("Turn Right to Left");
+            }
             targetPosition = transform.position + dir;
             isAtTarget = false;
             isRunningCoroutine = false;
             playerBaseClass.playerLimitClass.OnStaminaUpdate(-1);
             yield break;
         } else if (hit.collider.tag == "MinableTile") {
+            // mine tile
+            // set direction in animator
+            if (dir == Vector3.right) {
+                animator.SetTrigger(1);
+            } else if (dir == Vector3.left) {
+                animator.SetTrigger(2);
+            }
             Tile t = hit.collider.GetComponent<Tile>();
             if (playerBaseClass.playerMiningClass.AttemptToMineTile(t)) {
                 yield return new WaitWhile(() => playerBaseClass.playerMiningClass.isMiningTile);
@@ -118,6 +138,9 @@ public class PlayerController : MonoBehaviour {
                     playerBaseClass.playerLimitClass.OnStaminaUpdate(-(int)t.mineTime);
             }
         }
+
+        animator.ResetTrigger("Turn Right to Left");
+        animator.ResetTrigger("Turn Left to Right");
 
         isRunningCoroutine = false;
         yield break;
@@ -144,9 +167,6 @@ public class PlayerController : MonoBehaviour {
 
         if (yMaxRenderValue > worldGeneratorClass.yHeight)
             yMaxRenderValue = worldGeneratorClass.yHeight;
-
-        print(yMinRenderValue);
-        print(yMaxRenderValue);
 
         // Checking if within bounds of render distance on xCord
         for (int x = xMinRenderValue; x <= xMaxRenderValue; x++) {
