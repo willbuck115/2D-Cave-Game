@@ -66,6 +66,8 @@ public class PlayerController : MonoBehaviour {
     private void Update() {
         if (Input.GetKeyUp(right)) {
             animator.SetBool("Walking Right", false);
+        } else if (Input.GetKeyUp(left)){
+            animator.SetBool("Walking Left", false);
         }
 
         if (!isAtTarget) {
@@ -78,10 +80,12 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey(left) && (int)transform.position.x > 49) {
                 // go left
                 isRunningCoroutine = true;
+                animator.SetBool("Walking Left", true);
                 StartCoroutine(TriggerMovement(Vector2.left));
             } else if (Input.GetKey(right) && (int)transform.position.x <= 149) {
                 // go right
                 isRunningCoroutine = true;
+                animator.SetBool("Walking Right", true);
                 StartCoroutine(TriggerMovement(Vector2.right));
             } else if (Input.GetKey(down) && (int)transform.position.y > 50) {
                 // go downwards
@@ -111,12 +115,6 @@ public class PlayerController : MonoBehaviour {
         if (hit.collider == null) {
             // move
             // set direction in animator
-            if (dir == Vector3.right) {
-                animator.SetBool("Walking Right", true);
-
-            } else if(dir == Vector3.left){
-                animator.SetTrigger("Turn Right to Left");
-            }
             targetPosition = transform.position + dir;
             isAtTarget = false;
             isRunningCoroutine = false;

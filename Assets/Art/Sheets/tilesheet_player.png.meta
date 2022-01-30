@@ -67,34 +67,34 @@ TextureImporter:
     second: player_right_walk_5
   - first:
       213: 1549805066151591931
-    second: tilesheet_player_21
+    second: player_right_walk_6
   - first:
       213: -6658184756132166376
-    second: tilesheet_player_22
+    second: player_right_walk_7
   - first:
       213: -5379874453837510754
     second: tilesheet_player_23
   - first:
       213: 7347173050081933192
-    second: tilesheet_player_24
+    second: player_left_walk_1
   - first:
       213: -6097566650177463937
-    second: tilesheet_player_25
+    second: player_left_walk_2
   - first:
       213: -8566513821608829172
-    second: tilesheet_player_26
+    second: player_left_walk_3
   - first:
       213: -6353833318907535688
-    second: tilesheet_player_27
+    second: player_left_walk_4
   - first:
       213: 6520967696838233147
-    second: tilesheet_player_28
+    second: player_left_walk_5
   - first:
       213: -4272611469601159595
-    second: tilesheet_player_29
+    second: player_left_walk_6
   - first:
       213: 4960259228759095661
-    second: tilesheet_player_30
+    second: player_left_walk_7
   - first:
       213: -3220419431568945315
     second: tilesheet_player_31
@@ -7646,7 +7646,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: tilesheet_player_21
+      name: player_right_walk_6
       rect:
         serializedVersion: 2
         x: 160
@@ -7954,7 +7954,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: tilesheet_player_22
+      name: player_right_walk_7
       rect:
         serializedVersion: 2
         x: 192
@@ -8570,7 +8570,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: tilesheet_player_24
+      name: player_left_walk_1
       rect:
         serializedVersion: 2
         x: 0
@@ -8878,7 +8878,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: tilesheet_player_25
+      name: player_left_walk_2
       rect:
         serializedVersion: 2
         x: 32
@@ -9186,7 +9186,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: tilesheet_player_26
+      name: player_left_walk_3
       rect:
         serializedVersion: 2
         x: 64
@@ -9494,7 +9494,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: tilesheet_player_27
+      name: player_left_walk_4
       rect:
         serializedVersion: 2
         x: 96
@@ -9802,7 +9802,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: tilesheet_player_28
+      name: player_left_walk_5
       rect:
         serializedVersion: 2
         x: 128
@@ -10110,7 +10110,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: tilesheet_player_29
+      name: player_left_walk_6
       rect:
         serializedVersion: 2
         x: 160
@@ -10418,7 +10418,7 @@ TextureImporter:
         boneIndex[2]: 0
         boneIndex[3]: 0
     - serializedVersion: 2
-      name: tilesheet_player_30
+      name: player_left_walk_7
       rect:
         serializedVersion: 2
         x: 192
