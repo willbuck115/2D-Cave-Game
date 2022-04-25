@@ -61,5 +61,12 @@ public class AssetSaveManager : MonoBehaviour
 
 [System.Serializable]
 public class SaveablePlayerInformation {
-    
+    // public decimal bank
+    public int dayCount;
+    public List<InventoryItem> inventoryItems;
+
+    // figure a way to save owned and current pickaxes
+    // maybe an array of booleans?
+
+    // save updgrades when added.
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7766ec3882cf0c4d9110e35804fea0c, type: 3}
-  m_Name: Default Stone Pickaxe
+  m_Name: Silver Pickaxe
   m_EditorClassIdentifier: 
-  pickaxeTexture: {fileID: 1274045870509013926, guid: 2849683d7b1fd8c4a821c86c0e93b7ca, type: 3}
-  miningLevel: 1
+  pickaxeTexture: {fileID: 0}
+  miningLevel: 0
   numberOfMaterialsRequired: 0
   craftingItem: {fileID: 0}

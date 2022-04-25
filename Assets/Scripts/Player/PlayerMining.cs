@@ -7,6 +7,8 @@ public class PlayerMining : MonoBehaviour
 
     public Pickaxe currentPickaxe;
     public Pickaxe[] ownedPickaxes;
+    public GameObject pickaxeObject;
+    private SpriteRenderer pickaxeRend;
 
     private PlayerBase playerClass;
     public bool isMiningTile;
@@ -15,6 +17,8 @@ public class PlayerMining : MonoBehaviour
 
     private void Start() {
         playerClass = this.GetComponent<PlayerBase>();
+        pickaxeRend = pickaxeObject.GetComponent<SpriteRenderer>();
+        pickaxeRend.sprite = currentPickaxe.pickaxeTexture;
     }
 
     public bool AttemptToMineTile(Tile t) {

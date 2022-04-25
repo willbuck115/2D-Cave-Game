@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] private Transform collectables;
 
     private Animator animator;
+    [SerializeField] private Animator pickaxeAnimator;
 
     // needs to be removed
     public bool debugworld;
@@ -80,12 +81,10 @@ public class PlayerController : MonoBehaviour {
             if (Input.GetKey(left) && (int)transform.position.x > 49) {
                 // go left
                 isRunningCoroutine = true;
-                animator.SetBool("Walking Left", true);
                 StartCoroutine(TriggerMovement(Vector2.left));
             } else if (Input.GetKey(right) && (int)transform.position.x <= 149) {
                 // go right
                 isRunningCoroutine = true;
-                animator.SetBool("Walking Right", true);
                 StartCoroutine(TriggerMovement(Vector2.right));
             } else if (Input.GetKey(down) && (int)transform.position.y > 50) {
                 // go downwards
@@ -112,9 +111,22 @@ public class PlayerController : MonoBehaviour {
 
     private IEnumerator TriggerMovement(Vector3 dir) {
         RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, .52f, layerMask);
+
+        if (dir == Vector3.right) {
+            animator.SetBool("Right", true);
+            animator.SetBool("Left", false);
+        } else if (dir == Vector3.left) {
+            animator.SetBool("Left", true);
+            animator.SetBool("Right", false);
+        }
+
         if (hit.collider == null) {
             // move
             // set direction in animator
+            if (dir == Vector3.right) {
+                animator.SetBool("Walking Right", true);
+            } else if (dir == Vector3.left)
+                animator.SetBool("Walking Left", true);
             targetPosition = transform.position + dir;
             isAtTarget = false;
             isRunningCoroutine = false;
@@ -123,22 +135,24 @@ public class PlayerController : MonoBehaviour {
         } else if (hit.collider.tag == "MinableTile") {
             // mine tile
             // set direction in animator
+
             if (dir == Vector3.right) {
-                animator.SetTrigger(1);
-            } else if (dir == Vector3.left) {
-                animator.SetTrigger(2);
-            }
+                pickaxeAnimator.SetBool("Swing Right", true);
+            } else if (dir == Vector3.left)
+                pickaxeAnimator.SetBool("Swing Left", true);
+
             Tile t = hit.collider.GetComponent<Tile>();
             if (playerBaseClass.playerMiningClass.AttemptToMineTile(t)) {
                 yield return new WaitWhile(() => playerBaseClass.playerMiningClass.isMiningTile);
-                    worldGeneratorClass.tileMap[(int)t.indexInNoiseArray.x, (int)t.indexInNoiseArray.y] = 0;
-                    t.Mined(collectables);
-                    playerBaseClass.playerLimitClass.OnStaminaUpdate(-(int)t.mineTime);
+                pickaxeAnimator.SetBool("Swing Left", false);
+                pickaxeAnimator.SetBool("Swing Right", false);
+                worldGeneratorClass.tileMap[(int)t.indexInNoiseArray.x, (int)t.indexInNoiseArray.y] = 0;
+                t.Mined(collectables);
+                playerBaseClass.playerLimitClass.OnStaminaUpdate(-(int)t.mineTime);
             }
         }
 
-        animator.ResetTrigger("Turn Right to Left");
-        animator.ResetTrigger("Turn Left to Right");
+        
 
         isRunningCoroutine = false;
         yield break;

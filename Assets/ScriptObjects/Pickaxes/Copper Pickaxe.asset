@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7766ec3882cf0c4d9110e35804fea0c, type: 3}
   m_Name: Copper Pickaxe
   m_EditorClassIdentifier: 
+  pickaxeTexture: {fileID: -6137921191436142499, guid: 2849683d7b1fd8c4a821c86c0e93b7ca, type: 3}
   miningLevel: 2
   numberOfMaterialsRequired: 5
-  player: {fileID: 2256907767540289064, guid: 4ec4dbda024d1e04fb3419131c118b2a, type: 3}
   craftingItem: {fileID: 7296901947062211765, guid: 13ca0f6e1157f1344b8dd73464644fd7, type: 3}

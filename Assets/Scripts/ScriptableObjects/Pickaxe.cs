@@ -6,8 +6,7 @@ using UnityEngine;
 public class Pickaxe : ScriptableObject
 {
 
-    //public Sprite pickaxeTexture;
-    //public 
+    public Sprite pickaxeTexture;
 
     public int miningLevel = 0;
     public int numberOfMaterialsRequired = 0;
