@@ -80,10 +80,12 @@ public class PlayerController : MonoBehaviour {
         if (!isRunningCoroutine) {
             if (Input.GetKey(left) && (int)transform.position.x > 49) {
                 // go left
+                animator.SetBool("Walking Left", true);
                 isRunningCoroutine = true;
                 StartCoroutine(TriggerMovement(Vector2.left));
             } else if (Input.GetKey(right) && (int)transform.position.x <= 149) {
                 // go right
+                animator.SetBool("Walking Right", true);
                 isRunningCoroutine = true;
                 StartCoroutine(TriggerMovement(Vector2.right));
             } else if (Input.GetKey(down) && (int)transform.position.y > 50) {
@@ -133,6 +135,15 @@ public class PlayerController : MonoBehaviour {
             playerBaseClass.playerLimitClass.OnStaminaUpdate(-1);
             yield break;
         } else if (hit.collider.tag == "MinableTile") {
+
+            // Cancel movement
+            // Maybe play a sound?
+            // Or do an animation that shows you cannot move
+
+
+            // Old mining mechanic
+
+            /*
             // mine tile
             // set direction in animator
 
@@ -149,10 +160,10 @@ public class PlayerController : MonoBehaviour {
                 worldGeneratorClass.tileMap[(int)t.indexInNoiseArray.x, (int)t.indexInNoiseArray.y] = 0;
                 t.Mined(collectables);
                 playerBaseClass.playerLimitClass.OnStaminaUpdate(-(int)t.mineTime);
-            }
+            }*/
         }
 
-        
+
 
         isRunningCoroutine = false;
         yield break;
